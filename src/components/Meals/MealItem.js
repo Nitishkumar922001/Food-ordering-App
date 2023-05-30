@@ -6,7 +6,8 @@ import CartCxt from "../../Store/CartCxt";
 
 function MealItem(props) {
   const meal = { ...props.meal };
-  const price = `$ ${meal.price.toFixed(2)}`;
+  const price = `$ ${new Number(meal.price).toFixed(2)}`;
+  console.log(meal);
   return (
     <li className={classes.meal}>
       <div>
@@ -33,6 +34,8 @@ function MealItemForm(props) {
     event.preventDefault();
     const amount = amountRef.current.value;
     Cartcxt.addItem({ ...meal, amount });
+    // amountRef.current.value=(+amountRef.current.value+1).toString();
+    
   }
 
   return (
@@ -46,6 +49,7 @@ function MealItemForm(props) {
           min: 1,
           max: 5,
           step: 1,
+          
           defaultValue: 1,
         }}
       />
